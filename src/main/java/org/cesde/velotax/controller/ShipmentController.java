@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/shipments")
@@ -18,7 +19,7 @@ public class ShipmentController {
     
     @PostMapping
     public ResponseEntity<ApiResponse<CreateShipmentResponse>> createShipment(
-            @RequestBody CreateShipmentRequest request) {
+            @Valid @RequestBody CreateShipmentRequest request) {
         try {
             // TODO: Obtener usuario del contexto de seguridad
             User dummyUser = User.builder()

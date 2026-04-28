@@ -34,12 +34,13 @@ public class Quote {
     private BigDecimal weight;
     
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, columnDefinition = "ENUM('standard', 'express', 'overnight')")
+    @Column(nullable = false, columnDefinition = "ENUM('standard', 'express', 'overnight', 'premium', 'economic')")
     private QuoteServiceType serviceType;
     
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal baseCost;
     
+    @Builder.Default
     @Column(precision = 5, scale = 2, columnDefinition = "DECIMAL(5,2) DEFAULT 1")
     private BigDecimal distanceFactor = BigDecimal.ONE;
     
@@ -61,6 +62,6 @@ public class Quote {
     }
     
     public enum QuoteServiceType {
-        STANDARD, EXPRESS, OVERNIGHT
+        STANDARD, EXPRESS, OVERNIGHT, PREMIUM, ECONOMIC
     }
 }

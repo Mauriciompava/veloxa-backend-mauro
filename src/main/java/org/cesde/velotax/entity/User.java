@@ -35,9 +35,11 @@ public class User {
     private String phone;
     
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     @Column(columnDefinition = "ENUM('admin', 'user', 'support') DEFAULT 'user'")
-    private UserRole role = UserRole.USER;
+    private UserRole role = UserRole.user;
     
+    @Builder.Default
     @Column(columnDefinition = "BOOLEAN DEFAULT true")
     private Boolean isActive = true;
     
@@ -62,6 +64,6 @@ public class User {
     }
     
     public enum UserRole {
-        ADMIN, USER, SUPPORT
+        admin, user, support
     }
 }

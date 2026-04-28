@@ -46,16 +46,18 @@ public class Shipment {
     private BigDecimal totalWeight;
     
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, columnDefinition = "ENUM('standard', 'express', 'overnight')")
+    @Column(nullable = false, columnDefinition = "ENUM('standard', 'express', 'overnight', 'premium', 'economic')")
     private ServiceType serviceType;
     
     @Column(precision = 12, scale = 2)
     private BigDecimal totalValueDeclared;
     
+    @Builder.Default
     @Column(columnDefinition = "BOOLEAN DEFAULT false")
     private Boolean insurance = false;
     
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     @Column(nullable = false, columnDefinition = "ENUM('Pendiente', 'Recogido', 'En tránsito', 'En reparto', 'Entregado', 'Cancelado') DEFAULT 'Pendiente'")
     private ShipmentStatus status = ShipmentStatus.PENDIENTE;
     
@@ -86,7 +88,7 @@ public class Shipment {
     }
     
     public enum ServiceType {
-        STANDARD, EXPRESS, OVERNIGHT
+        STANDARD, EXPRESS, OVERNIGHT, PREMIUM, ECONOMIC
     }
     
     public enum ShipmentStatus {

@@ -25,6 +25,7 @@ public class ShipmentItem {
     @Column(nullable = false, length = 150)
     private String description;
     
+    @Builder.Default
     @Column(nullable = false, columnDefinition = "INT DEFAULT 1")
     private Integer quantity = 1;
     

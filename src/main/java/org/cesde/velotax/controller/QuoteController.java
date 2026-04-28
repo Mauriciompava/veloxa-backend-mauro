@@ -5,6 +5,7 @@ import org.cesde.velotax.service.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/quotes")
@@ -16,7 +17,7 @@ public class QuoteController {
     
     @PostMapping
     public ResponseEntity<ApiResponse<QuoteResponse>> getQuote(
-            @RequestBody QuoteRequest request) {
+            @Valid @RequestBody QuoteRequest request) {
         try {
             // TODO: Obtener usuario del contexto de seguridad
             org.cesde.velotax.entity.User dummyUser = org.cesde.velotax.entity.User.builder()

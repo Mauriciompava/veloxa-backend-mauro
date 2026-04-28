@@ -47,10 +47,12 @@ public class Contact {
     private String ticketNumber;
     
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     @Column(columnDefinition = "ENUM('Nuevo', 'En proceso', 'Resuelto', 'Cerrado') DEFAULT 'Nuevo'")
     private ContactStatus status = ContactStatus.NUEVO;
     
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     @Column(columnDefinition = "ENUM('Baja', 'Media', 'Alta', 'Crítica') DEFAULT 'Media'")
     private ContactPriority priority = ContactPriority.MEDIA;
     

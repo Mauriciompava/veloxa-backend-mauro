@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/contact")
@@ -17,7 +18,7 @@ public class ContactController {
     
     @PostMapping
     public ResponseEntity<ApiResponse<ContactResponse>> createContact(
-            @RequestBody ContactRequest request) {
+            @Valid @RequestBody ContactRequest request) {
         try {
             ContactResponse response = contactService.createContact(request);
             return ResponseEntity.status(HttpStatus.CREATED)
